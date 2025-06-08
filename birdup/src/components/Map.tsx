@@ -12,7 +12,7 @@ function ObservationMap() {
             lng: position.coords.longitude}))
     ));
     return (
-        <div style={{ height: '100vh', width: '100%' }}>
+
         <GoogleMapReact
             bootstrapURLKeys={{ key: "" }}
             defaultCenter={center}
@@ -20,7 +20,6 @@ function ObservationMap() {
         >
 
         </GoogleMapReact>
-        </div>
     )
 };
 
