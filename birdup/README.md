@@ -52,3 +52,7 @@ export default tseslint.config({
   },
 })
 ```
+
+See the following docs for our important libraries:
+[react-bootstrap](https://react-bootstrap.netlify.app/)
+[react-google-maps](https://visgl.github.io/react-google-maps/docs)
