@@ -1,0 +1,28 @@
+services:
+  frontend:
+    build: ./birdup
+    ports:
+      - "5173:5173"
+    develop:
+      watch:
+        - action: sync
+          path: ./birdup
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
+
+  backend:
+    build: ./backend-db
+    ports:
+      - "3000:3000"
+    develop:
+      watch:
+        - action: sync
+          path: ./backend-db
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: package.json
