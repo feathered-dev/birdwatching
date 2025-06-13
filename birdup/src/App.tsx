@@ -1,32 +1,38 @@
-import ObservationMap from './components/Map'
-import ParamField from './components/ParamField'
-import BirdList from './components/BirdList'
+import ObservationMap from './components/ObservationMap'
+import ParamForm from './components/ParamForm'
 import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
+import NearbyBirds from './components/NearbyBirds'
+import { useState } from 'react'
+import type { Bird } from './types/Bird'
+
+const exampleBird : Bird = {
+  species : 'Common Grackle',
+  sex: 'male',
+  hasSeen: false,
+  soundSources: [''],
+  imgSource: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Common_grackle_in_PP_%2836732%29.jpg/1920px-Common_grackle_in_PP_%2836732%29.jpg',
+  descSource: 'https://en.wikipedia.org/wiki/Common_grackle'
+}
 
 function App() {
+  const [userParams, setUserParams] = useState({lat: NaN, lng: NaN, range: NaN})
+
   // Starting layout
   return (
-      <Container fluid={true} >
+    <>
         {/* Top row used for user entered parameters */}
-        <Row>
-            <ParamField />
-        </Row>
-        <Row>
-          {/* Bottom Left is observation map */}
-          <Col style={{}}>
-            <ObservationMap />
-          </Col>
-          {/* Bottom Right is bird checklist */}
-          <Col style={{height: '80vh', width: '25vw'}}>
-            <BirdList />
-          </Col>
-          <Col style={{height: '80vh', width: '25vw'}}>
-            <BirdList />
-          </Col>
-        </Row> 
-      </Container>
+          <ParamForm/>
+          <Container style={{height: '100vh', width: '100vw'}}>
+            {/* Bottom Left is observation map */}
+            <Container style={{height: '700px', width: '700px', float: 'left' }}>
+              <ObservationMap />
+            </Container>
+            {/* Bottom Right is bird checklist */}
+            <Container style={{float: 'right'}}>
+              <NearbyBirds birds={[exampleBird, exampleBird, exampleBird, exampleBird]}/>
+            </Container>
+          </Container>
+    </>
   )  
 }
 
