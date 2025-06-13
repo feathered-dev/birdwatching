@@ -7,6 +7,7 @@ const Madison = {lat: 43.074722, lng: 89.384167}
 function ObservationMap(): React.ReactElement {
     // Default location is Madison, WI
     const [center, setCenter] = useState(Madison);
+    const defaultCenter = Madison
 
     // Ask browser for current location
     // This probably will end up refactoring somewhere else
@@ -19,7 +20,7 @@ function ObservationMap(): React.ReactElement {
         // TODO: Render bird observations in as pins in here
         <GoogleMapReact
             bootstrapURLKeys={{ key: "" }}
-            defaultCenter={center}
+            defaultCenter={defaultCenter}
             defaultZoom={11}
         >
             
