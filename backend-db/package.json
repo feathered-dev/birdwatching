@@ -1,0 +1,13 @@
+{
+  "name": "birdwatching-db",
+  "version": "0.0.0",
+  "description": "backend",
+  "main": "index.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "node --experimental-transform-types"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.1"
+  }
+}

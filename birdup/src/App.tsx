@@ -17,6 +17,28 @@ function App() {
   const [userParams, setUserParams] = useState({lat: NaN, lng: NaN, range: NaN})
 
   // Starting layout
+  
+  // this is just POC, feel free to delete
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    fetch("http://localhost:3000/")
+      .then(response => {
+        if (response.ok) {
+          return response.text();
+        }
+        throw response;
+      })
+      .then(text => {
+        setText(text);
+      })
+      .catch(error => {
+        console.error("error with db: ", error);
+      });
+    }, 
+    [setText]
+  );
+
   return (
     <>
         {/* Top row used for user entered parameters */}
@@ -34,5 +56,7 @@ function App() {
     </>
   )  
 }
+
+
 
 export default App
