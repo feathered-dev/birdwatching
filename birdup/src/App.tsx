@@ -9,7 +9,6 @@ const exampleBird : Bird = {
   species : 'Common Grackle',
   sex: 'male',
   hasSeen: false,
-  soundSources: [''],
   imgSource: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Common_grackle_in_PP_%2836732%29.jpg/1920px-Common_grackle_in_PP_%2836732%29.jpg',
   descSource: 'https://en.wikipedia.org/wiki/Common_grackle'
 }
