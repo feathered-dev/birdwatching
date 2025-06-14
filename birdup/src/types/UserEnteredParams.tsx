@@ -1,7 +1,7 @@
 // The info we'll need to query for nearby birds!
 export type UserEnteredParams = {
-      lat: Number
-      lng: Number
-      range: Number
-      userID: Number
+      lat: number
+      lng: number
+      rangeMiles: number
+      userID?: number
 }
