@@ -1,21 +1,16 @@
-import React from 'react'
-import { useState } from "react"
 import GoogleMapReact from "google-map-react"
 
-const Madison = {lat: 43.074722, lng: 89.384167}
+type LocationProps = {
+    defaultLat: number
+    defaultLng: number
+}
 
-function ObservationMap(): React.ReactElement {
-    // Default location is Madison, WI
-    const [center, setCenter] = useState(Madison);
-    const defaultCenter = Madison
-
-    // Ask browser for current location
-    // This probably will end up refactoring somewhere else
-    navigator.geolocation.getCurrentPosition( (position) => (
-        setCenter( () => (
-            {lat: position.coords.latitude, 
-            lng: position.coords.longitude}))
-    ));
+function ObservationMap(props: LocationProps) : React.ReactElement {
+    const defaultCenter = {
+        lat: props.defaultLat,
+        lng: props.defaultLng
+    }
+    
     return (
         // TODO: Render bird observations in as pins in here
         <GoogleMapReact

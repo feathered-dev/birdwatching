@@ -15,7 +15,7 @@ function BirdCard(props : BirdProps) {
         <Card style={{ width: '18rem', border: '1rem inset'}} border='dark'>
             <Card.Img variant={'top'} src={bird.imgSource} width={'150px'}/>
             <Card.Title>{bird.species}</Card.Title>
-            <Card.Text>This will be replaced with a bird description!</Card.Text>
+            <Card.Text>This will be replaced with a bird description! :)</Card.Text>
             <Button size={'sm'}>I've seen this! </Button>
         </Card>
         </>
