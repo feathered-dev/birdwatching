@@ -5,9 +5,22 @@
   "main": "index.ts",
   "license": "MIT",
   "scripts": {
-    "build": "node --experimental-transform-types"
+    "build": "node --experimental-transform-types",
+    "alt-build": "tsc ./index.ts && node index.js"
   },
   "devDependencies": {
-    "@types/node": "^24.0.1"
+    "@eslint/js": "^9.29.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1",
+    "eslint": "^9.29.0",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.2.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.34.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1"
   }
 }

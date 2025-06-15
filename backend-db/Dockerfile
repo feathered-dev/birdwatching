@@ -6,4 +6,4 @@ COPY . .
 RUN apk add yarn
 RUN yarn init -y
 
-CMD [ "yarn", "run", "build", "index.ts" ]
+CMD [ "yarn", "run", "alt-build" ]

@@ -1,18 +1,24 @@
-import http from 'http';
-import sqlite from 'node:sqlite';
+import express from 'express';
+import { Query } from './database';
 
-const db = new sqlite.DatabaseSync("./db/eod.db");
+const app = express();
+const port = 3000;
+const api_v1 = express.Router();
 
-const server = http.createServer((_req, res) => {
-    // POC
-    let record = db.prepare("SELECT * FROM Birdfeeder limit 1;").get();
-    res.write(record?.["LOC_ID"]);
-    res.end();
-})
+app.use("/api/v1", api_v1);
 
-// this port needs to stay in sync with ../compose.yaml
-server.listen(3000, () => {
-    console.log("server is running");
-})
+for(const query of Query.getQueries()) {
+    const { validators, fn } = Query.select(query);
+    for (const validator of validators) {
+            api_v1.get(`query/${query}`, validator);
+    }
 
-// right now we never close the db connection, obviously that's not ideal
+    api_v1.get(`query/${query}`, (req, res) => {
+        res.setHeader('Cache-Control', 'max-age=60')
+        res.status(200)
+            .json(fn(req))
+            .end();
+    });
+}
+
+app.listen(port);
